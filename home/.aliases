@@ -1,8 +1,11 @@
 # Commands
-alias ls="ls --color=tty"
+alias ls="ls --color=always"
 alias ll="ls -laph"
 alias l="ls -lph"
-alias cd="cd -P"
+alias lgrep="ll | egrep -i"
+
+# Have less with colors
+alias less="less -R"
 
 # Files
 alias aliases="vim ~/.aliases"
@@ -13,4 +16,18 @@ alias vimrc="vim ~/.vimrc"
 alias grep="grep --color=auto"
 alias fgrep="fgrep --color=auto"
 alias egrep="egrep --color=auto"
-alias pcregrep="egrep --color=auto"
+alias pcregrep="pcregrep --color=auto"
+
+# Shortcuts
+alias c="code ."
+
+# JMP
+JMP_VERSION="2.0.1"
+
+alias jmp-refactor='mvn eu.jsparrow:jsparrow-maven-plugin:'"$JMP_VERSION"':refactor'
+alias jmp-refactor-debug='mvnDebug eu.jsparrow:jsparrow-maven-plugin:'"$JMP_VERSION"':refactor'
+alias jmp-global='mvn eu.jsparrow:jsparrow-maven-plugin:'"$JMP_VERSION"':refactor -DconfigFile=/home/'"$USER"'/maven-workspace/jsparrow.yml'
+
+function jmp() {
+	mvn eu.jsparrow:jsparrow-maven-plugin:$JMP_VERSION:$1
+}
